@@ -1,37 +1,44 @@
 import Bowman from '../bowman';
 
-test('invalid class name type', () => {
-    expect(() => new Bowman(123546)).toThrow();
-});
-
-test('invalid class type', () => {
-    expect(() => new Character('Jack', Number)).toThrow();
-});
-
-test('short class name', () => {
-    expect(() => new Bowman('A')).toThrow();
-});
-
-test('long class name', () => {
-    expect(() => new Bowman('Looooooooooooong')).toThrow();
-});
-
-test('health parametr is correct', () => {
+test('level up dead', () => {
     const bowman = new Bowman('Jack');
-    expect(bowman.health = 100).toBe(100);
+    bowman.health = 0;
+    expect(() => bowman.levelUp()).toThrow();
 });
 
-test('level parametr is correct', () => {
+test('level up (health = 100)', () => {
     const bowman = new Bowman('Jack');
-    expect(bowman.level = 1).toBe(1);
+    bowman.levelUp();
+    expect(bowman.health).toBe(100);
 });
 
-test('attack parametr is correct', () => {
+test('level up (level += 1)', () => {
     const bowman = new Bowman('Jack');
-    expect(bowman.attack = 25).toBe(25);
+    bowman.levelUp();
+    expect(bowman.level).toBe(2);
 });
 
-test('defence parametr is correct', () => {
+test('level up (attack + 20%)', () => {
     const bowman = new Bowman('Jack');
-    expect(bowman.defence = 25).toBe(25);
+    bowman.levelUp();
+    expect(bowman.attack).toBe(30);
+});
+
+test('level up (defence + 20%)', () => {
+    const bowman = new Bowman('Jack');
+    bowman.levelUp();
+    expect(bowman.defence).toBe(30);
+});
+
+test('damage with positive health', () => {
+    const bowman = new Bowman('Jack');
+    bowman.damage(40);
+    expect(bowman.health).toBe(70);
+});
+
+test('damage with negative health', () => {
+    const bowman = new Bowman('Jack');
+    bowman.damage(40);
+    bowman.health = -40
+    expect(bowman.health).toBe(0);
 });
