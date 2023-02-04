@@ -1,4 +1,4 @@
-class Character {
+export default class Character {
     constructor(name, type) {
         if ((typeof (name) === 'string' && typeof (type) === 'string')
             && (name.length >= 2 && name.length <= 10)
@@ -20,7 +20,8 @@ class Character {
     }
 }
 
-levelUp() {
+levelUp()
+    {
     if (this.health > 0) {
         this.level += 1;
         this.attack *= 1.2;
@@ -31,7 +32,8 @@ levelUp() {
     }
 }
 
-damage(points) {
+damage(points)
+    {
     if (this.health >= 0) {
         this.health -= points * (1 - this.defence / 100);
     }
@@ -40,5 +42,3 @@ damage(points) {
         this.health = 0;
     }
 }
-
-export {Character as default, levelUp, demage};
