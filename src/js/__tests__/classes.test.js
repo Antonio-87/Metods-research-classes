@@ -39,6 +39,6 @@ test('damage with positive health', () => {
 test('damage with negative health', () => {
     const bowman = new Bowman('Jack');
     bowman.damage(40);
-    bowman.health = -40
+    bowman.health = -40;
     expect(bowman.health).toBe(0);
 });
