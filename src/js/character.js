@@ -1,4 +1,4 @@
-export default class Character {
+class Character {
     constructor(name, type) {
         if ((typeof (name) === 'string' && typeof (type) === 'string')
             && (name.length >= 2 && name.length <= 10)
@@ -40,3 +40,5 @@ damage(points) {
         this.health = 0;
     }
 }
+
+export {Character as default, levelUp, demage};
