@@ -2,8 +2,8 @@ export default class Character {
     constructor(name, type) {
         const HEROES = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
         if ((typeof (name) === 'string' && typeof (type) === 'string')
-                && (name.length >= 2 && name.length <= 10)
-                && HEROES.includes(type)) {
+            && (name.length >= 2 && name.length <= 10)
+            && HEROES.includes(type)) {
             this.name = name;
             this.type = type;
             this.health = 100;
